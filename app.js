@@ -25,12 +25,13 @@ mongoose.connect(
         useNewUrlParser: true,
         useUnifiedTopology: true
     },
-    () => console.log('Connected to Neptune DB')
+    () => console.log('Connected to Neptune DB, API Server is Ready')
 );
 
-//ROUTES
+// ROUTES HOME
 app.get('/', (req, res) => {
-    res.send("we are on home");
+    res.sendFile('view/home.html', { root: __dirname })
+    console.log("Home Page");
 });
 
 // IMPORT ROUTES USER

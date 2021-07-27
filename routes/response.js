@@ -13,7 +13,7 @@ exports.error = (message, statusCode) => {
 
     // Get matched code
     const findCode = codes.find((code) => code == statusCode);
-
+    
     if (!findCode) statusCode = 500;
     else statusCode = findCode;
     return {

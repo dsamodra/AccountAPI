@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Account | API</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        .content-3-1 .btn:focus,
+        .content-3-1 .btn:active {
+            outline: none !important;
+        }
+
+        .content-3-1 {
+            padding: 5rem 2rem;
+        }
+
+        .content-3-1 .img-hero {
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .content-3-1 .right-column {
+            width: 100%;
+        }
+
+        .content-3-1 .title-text {
+            font: 600 1.875rem/2.25rem Poppins, sans-serif;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.025em;
+            color: #121212;
+        }
+
+        .content-3-1 .title-caption {
+            font: 500 1.5rem/2rem Poppins, sans-serif;
+            margin-bottom: 1.25rem;
+            color: #121212;
+        }
+
+        .content-3-1 .circle {
+            font: 500 1.25rem/1.75rem Poppins, sans-serif;
+            height: 3rem;
+            width: 3rem;
+            margin-bottom: 1.25rem;
+            border-radius: 9999px;
+            background-color: #ffbf56;
+        }
+
+        .content-3-1 .text-caption {
+            font: 400 1rem/1.75rem Poppins, sans-serif;
+            letter-spacing: 0.025em;
+            color: #565656;
+        }
+
+        .content-3-1 .btn-learn {
+            font: 600 1rem/1.5rem Poppins, sans-serif;
+            padding: 1rem 2.5rem;
+            background-color: #ffbf56;
+            transition: 0.3s;
+            letter-spacing: 0.025em;
+            border-radius: 0.75rem;
+        }
+
+        .content-3-1 .btn-learn:hover {
+            background-color: #ffefd5;
+            transition: 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .content-3-1 .title-text {
+                font: 600 2.25rem/2.5rem Poppins, sans-serif;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .content-3-1 .img-hero {
+                width: 50%;
+                margin-bottom: 0;
+            }
+
+            .content-3-1 .right-column {
+                width: 50%;
+            }
+
+            .content-3-1 .circle {
+                margin-right: 1.25rem;
+                margin-bottom: 0;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* The browser window */
+        .container {
+            border: 3px solid #f1f1f1;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        /* Container for columns and the top "toolbar" */
+        .row {
+            padding: 10px;
+            background: #ffbf56;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+        }
+
+        .left {
+            width: 15%;
+        }
+
+        .right {
+            width: 10%;
+        }
+
+        .middle {
+            width: 75%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Three dots */
+        .dot {
+            margin-top: 4px;
+            height: 12px;
+            width: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Three bars (hamburger menu) */
+        .bar {
+            width: 17px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            display: block;
+        }
+
+        /* Page content */
+        .content {
+            padding: 10px;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        .orange {
+            background-color: #ffbf56;
+            color: white;
+        }
+
+        .orange-hov:hover {
+            color: white;
+            background-color: #ffefd5;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="h-100 w-100 bg-white" style="box-sizing: border-box;">
+        <div class="content-3-1 container-xxl mx-auto position-relative animate__animated animate__bounceIn"
+            style="font-family: 'Poppins', sans-serif">
+            <div class="d-flex flex-lg-row flex-column align-items-center">
+                <!-- Left Column -->
+                <div class="img-hero text-center justify-content-center d-flex ">
+                    <img id="hero" class="img-fluid animate__animated animate__bounceIn"
+                        src="http://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content3/Content-3-1.png"
+                        alt="" />
+                </div>
+
+                <!-- Right Column -->
+                <div
+                    class="right-column d-flex flex-column align-items-lg-start align-items-center text-lg-start text-center animate__animated animate__bounceIn">
+                    <h2 class="title-text">Neptune API</h2>
+                    <ul class="p-0 m-0">
+                        <li class="list-unstyled" style="margin-bottom: 2rem">
+                            <h4
+                                class="title-caption d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
+                                <span class="circle text-white d-flex align-items-center justify-content-center">
+                                    1
+                                </span>
+                                User Management
+                            </h4>
+                            <p class="text-caption">
+                                Retrive All Data from Database<br class="d-sm-inline d-none" />
+                                <a
+                                    href="https://neptune-account.herokuapp.com/user">https://neptune-account.herokuapp.com/user</a>
+                            </p>
+                        </li>
+                        <li class="list-unstyled" style="margin-bottom: 2rem">
+                            <h4
+                                class="title-caption d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
+                                <span class="circle text-white d-flex align-items-center justify-content-center">
+                                    2
+                                </span>
+                                Under Developing Another Features
+                            </h4>
+                            <p class="text-caption">
+                                Feature that Available : Create, Read, Update, Delete User<br
+                                    class="d-sm-inline d-none" />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="column left">
+                                        <span class="dot" style="background:#ED594A;"></span>
+                                        <span class="dot" style="background:#FDD800;"></span>
+                                        <span class="dot" style="background:#5AC05A;"></span>
+                                    </div>
+                                    <div class="column middle">
+                                    </div>
+                                    <div class="column right">
+                                        <div style="float:right">
+                                            <span class="bar"></span>
+                                            <span class="bar"></span>
+                                            <span class="bar"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <h3>The Data Structure</h3>
+                                    <p>{ id, profileImg, name, email, username, password, dateCreated }</p>
+                                </div>
+                            </div>
+                            </p>
+                        </li>
+                    </ul>
+                    <!-- <button type="button" class="btn btn-learn text-white" data-toggle="modal"
+                        data-target="#exampleModal" data-whatever="@mdo">Learn More</button> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document" style="margin-top: 7%;">
+            <div class="modal-content">
+                <div class="modal-header orange">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Feedback</h5>
+
+
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label" style="color: #c98b27;">Sender :</label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label" style="color: #c98b27;">Message :</label>
+                            <textarea class="form-control" id="message-text" placeholder="Your Feedback..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn orange orange-hov">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        });
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

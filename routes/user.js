@@ -11,11 +11,12 @@ router.get('/', async (req, res) => {
         const user = await User.find();
         res.status(200)
             .json(user);
+        console.log("Success : Retrive All Data User");
     } catch (err) {
         res.status(500)
             .json(error("Something went wrong", res.statusCode));
+        console.log("Failed : Retrive All Data User");
     }
-    console.log("Get All Data User");
 });
 
 // GET SPECIFIC USER
@@ -25,19 +26,39 @@ router.get('/:iduser', async (req, res) => {
         if (user != null) {
             res.status(200)
                 .json(user);
-            console.log("Get Data User " + user.name);
+            console.log("Success : Get Data User id " + user.name);
         } else {
             res.status(404)
                 .json(error("Data Not Found", res.statusCode));
-            console.log("User with id " + req.params.iduser + " Was not found");
+            console.log("Failed : Retrive User with id " + req.params.iduser + " Was Not Found")
         }
     } catch (err) {
         res.status(500)
             .json(error("Something went wrong", res.statusCode));
+        console.log("Server Error");
     }
-
 });
 
+// SELECT USER BY NAME
+router.get('/u/:name', async (req, res) => {
+    try {
+        await User.find({ name: req.params.name }, function (err, data) {
+            if (data != 0) {
+                res.status(200)
+                    .json(data)
+                console.log("Success : Get Data User " + req.params.name);
+            } else {
+                res.status(404)
+                    .json(error("Data Not Found", res.statusCode));
+                console.log("Failed : Retrive User with name " + req.params.name + " Was Not Found")
+            }
+        });
+    } catch (err) {
+        res.status(500)
+            .json(error("Something went wrong", res.statusCode));
+        console.log("Server Error");
+    }
+});
 
 // DELETE USER
 router.delete('/:iduser', async (req, res) => {
@@ -49,15 +70,16 @@ router.delete('/:iduser', async (req, res) => {
             const removeUser = await User.deleteOne({ _id: req.params.iduser });
             res.status(200)
                 .json(success("OK", res.statusCode));
-            console.log("Delete User " + user.name);
+            console.log("Success : Delete User " + user.name);
         } else {
             res.status(404)
                 .json(error("Data Not Found", res.statusCode));
-            console.log("User with id " + req.params.iduser + " Was not found");
+            console.log("Failed : Delete User with id " + req.params.iduser + " Was not found");
         }
     } catch (err) {
         res.status(500)
             .json(error("Something went wrong", res.statusCode));
+        console.log("Server Error");
     }
 
 });
@@ -81,15 +103,17 @@ router.patch('/:iduser', async (req, res) => {
             )
             res.status(200)
                 .json(success("OK", res.statusCode));
-            console.log("Update User " + req.params.iduser);
+            console.log("Success : Update User " + user.name);
 
         } else {
             res.status(404)
                 .json(error("Data Not Found", res.statusCode));
+            console.log("Failed : Update User " + req.params.iduser + " Not Found")
         }
     } catch (err) {
         res.status(500)
             .json(error("Something went wrong", res.statusCode));
+        console.log("Server Error");
     }
 
 });
@@ -97,7 +121,6 @@ router.patch('/:iduser', async (req, res) => {
 // INSERT USER
 router.post('/', async (req, res) => {
     const user = new User({
-        iduser: req.body.iduser,
         name: req.body.name,
         email: req.body.email,
         username: req.body.name,
@@ -109,13 +132,12 @@ router.post('/', async (req, res) => {
         const saveUser = await user.save();
         res.status(200)
             .json(success("OK", res.statusCode));
-        console.log('Add User ' + req.body.name);
+        console.log('Success Add User ' + req.body.name);
     } catch (err) {
         res.status(500)
             .json(error("Something went wrong", res.statusCode));
+        console.log('Failed Add User ' + req.body.name);
     }
-
-
 });
 
 module.exports = router;

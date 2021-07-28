@@ -10,8 +10,257 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        .content-3-1 .btn:focus,
+        .content-3-1 .btn:active {
+            outline: none !important;
+        }
+
+        .content-3-1 {
+            padding: 5rem 2rem;
+        }
+
+        .content-3-1 .img-hero {
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .content-3-1 .right-column {
+            width: 100%;
+        }
+
+        .content-3-1 .title-text {
+            font: 600 1.875rem/2.25rem Poppins, sans-serif;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.025em;
+            color: #121212;
+        }
+
+        .content-3-1 .title-caption {
+            font: 500 1.5rem/2rem Poppins, sans-serif;
+            margin-bottom: 1.25rem;
+            color: #121212;
+        }
+
+        .content-3-1 .circle {
+            font: 500 1.25rem/1.75rem Poppins, sans-serif;
+            height: 3rem;
+            width: 3rem;
+            margin-bottom: 1.25rem;
+            border-radius: 9999px;
+            background-color: #ffbf56;
+        }
+
+        .content-3-1 .text-caption {
+            font: 400 1rem/1.75rem Poppins, sans-serif;
+            letter-spacing: 0.025em;
+            color: #565656;
+        }
+
+        .content-3-1 .btn-learn {
+            font: 600 1rem/1.5rem Poppins, sans-serif;
+            padding: 1rem 2.5rem;
+            background-color: #ffbf56;
+            transition: 0.3s;
+            letter-spacing: 0.025em;
+            border-radius: 0.75rem;
+        }
+
+        .content-3-1 .btn-learn:hover {
+            background-color: #ffefd5;
+            transition: 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .content-3-1 .title-text {
+                font: 600 2.25rem/2.5rem Poppins, sans-serif;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .content-3-1 .img-hero {
+                width: 50%;
+                margin-bottom: 0;
+            }
+
+            .content-3-1 .right-column {
+                width: 50%;
+            }
+
+            .content-3-1 .circle {
+                margin-right: 1.25rem;
+                margin-bottom: 0;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* The browser window */
+        .container {
+            border: 3px solid #f1f1f1;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        /* Container for columns and the top "toolbar" */
+        .row {
+            padding: 10px;
+            background: #ffbf56;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+        }
+
+        .left {
+            width: 15%;
+        }
+
+        .right {
+            width: 10%;
+        }
+
+        .middle {
+            width: 75%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Three dots */
+        .dot {
+            margin-top: 4px;
+            height: 12px;
+            width: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Three bars (hamburger menu) */
+        .bar {
+            width: 17px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            display: block;
+        }
+
+        /* Page content */
+        .content {
+            padding: 10px;
+        }
+
+        .orange {
+            background-color: #ffbf56;
+            color: white;
+        }
+
+        .orange-hov:hover {
+            color: white;
+            background-color: #ffefd5;
+        }
+
+        /* The snackbar - position it at the bottom and in the middle of the screen */
+        #snackbar {
+            visibility: hidden;
+            /* Hidden by default. Visible on click */
+            min-width: 250px;
+            /* Set a default minimum width */
+            margin-left: -125px;
+            /* Divide value of min-width by 2 */
+            background-color: #333;
+            /* Black background color */
+            color: #fff;
+            /* White text color */
+            text-align: center;
+            /* Centered text */
+            border-radius: 2px;
+            /* Rounded borders */
+            padding: 16px;
+            /* Padding */
+            position: fixed;
+            /* Sit on top of the screen */
+            z-index: 1;
+            /* Add a z-index if needed */
+            left: 90%;
+            /* Center the snackbar */
+            top: 30px;
+            /* 30px from the bottom */
+        }
+
+        /* Show the snackbar when clicking on a button (class added with JavaScript) */
+        #snackbar.show {
+            visibility: visible;
+            /* Show the snackbar */
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 3s;
+            animation: fadein 0.5s, fadeout 0.5s 2.6s;
+        }
+
+        /* Animations to fade the snackbar in and out */
+        @-webkit-keyframes fadein {
+            from {
+                top: o;
+                opacity: 0;
+            }
+
+            to {
+                top: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                top: 0;
+                opacity: 0;
+            }
+
+            to {
+                top: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                top: 30px;
+                opacity: 1;
+            }
+
+            to {
+                top: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                top: 30px;
+                opacity: 1;
+            }
+
+            to {
+                top: 0;
+                opacity: 0;
+            }
+        }
+    </style>
 
     <title>Account | API</title>
 
@@ -104,7 +353,7 @@
                     <form>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label" style="color: #c98b27;">Sender :</label>
-                            <input type="text" class="form-control" id="sender-name" placeholder="Your Name">
+                            <input type="text" class="form-control" id="sender-name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label" style="color: #c98b27;">Message :</label>
@@ -129,39 +378,52 @@
             var sender = document.getElementById("sender-name").value;
             var text = document.getElementById("message-text").value;
 
-            var link = "https://neptune-account.herokuapp.com/feedback";
+            if (sender == "") {
+           
+                // Get the snackbar DIV
+                var x = document.getElementById("snackbar");
 
-            // Converting JSON data to string
-            var data = JSON.stringify({ "name": sender, "text": text });
+                x.innerHTML = "Add Name First";
+             
+                // Add the "show" class to DIV
+                x.className = "show";
+                // After 3 seconds, remove the show class from DIV
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            } else {
 
-            $.ajax({
-                url: 'https://neptune-account.herokuapp.com/feedback',
-                type: 'POST',
-                data: data,
-                dataType: 'json',
-                success: function () {
-                    $('#feedbackmodal').modal('toggle');
-                    // Get the snackbar DIV
-                    var x = document.getElementById("snackbar");
-                    var status = "Success Sending Feedback";
-                    x.append(status);
+                var link = "https://neptune-account.herokuapp.com/feedback";
+
+                // Converting JSON data to string
+                var data = JSON.stringify({ "name": sender, "text": text });
+
+                $.ajax({
+                    url: 'https://neptune-account.herokuapp.com/feedback',
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    success: function () {
+                        $('#feedbackmodal').modal('toggle');
+                        // Get the snackbar DIV
+                        var x = document.getElementById("snackbar");
+                        x.innerHTML = "Success Sending Feedback";
                         // Add the "show" class to DIV
-                    x.className = "show";
-                    // After 3 seconds, remove the show class from DIV
-                    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-                },
-                error: function () {
-                    $('#feedbackmodal').modal('toggle');
-                    // Get the snackbar DIV
-                    var x = document.getElementById("snackbar");
-                    var status = "Failed Sending Feedback";
-                    x.append(status);
+                        x.className = "show";
+                        // After 3 seconds, remove the show class from DIV
+                        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                    },
+                    error: function () {
+                        $('#feedbackmodal').modal('toggle');
+                        // Get the snackbar DIV
+                        var x = document.getElementById("snackbar");
+                        x.innerHTML = "Failed Sending Feedback";
                         // Add the "show" class to DIV
-                    x.className = "show";
-                    // After 3 seconds, remove the show class from DIV
-                    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-                }
-            });
+                        x.className = "show";
+                        // After 3 seconds, remove the show class from DIV
+                        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                    }
+                });
+            }
+
         });
     </script>
 

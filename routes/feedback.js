@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         console.log("Success : Retrive All Data Feedback");
     } catch (err) {
         res.status(500)
-            .json(error("Something went wrong", res.statusCode));
+            .json(error("Something went wrong", res.statusCode));S
         console.log("Failed : Retrive All Data Feedback");
     }
 });

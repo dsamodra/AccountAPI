@@ -38,5 +38,9 @@ app.get('/', (req, res) => {
 const userRoute = require('./routes/user');
 app.use('/user', userRoute);
 
+// IMPORT ROUTES FEEDBACK
+const feedbackRoute = require('./routes/feedback');
+app.use('/feedback', feedbackRoute);
+
 
 

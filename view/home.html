@@ -196,9 +196,9 @@
             /* Sit on top of the screen */
             z-index: 1;
             /* Add a z-index if needed */
-            left: 90%;
+            left: 50%;
             /* Center the snackbar */
-            top: 30px;
+            bottom: 30px;
             /* 30px from the bottom */
         }
 
@@ -215,48 +215,48 @@
         /* Animations to fade the snackbar in and out */
         @-webkit-keyframes fadein {
             from {
-                top: o;
+                bottom: o;
                 opacity: 0;
             }
 
             to {
-                top: 30px;
+                bottom: 30px;
                 opacity: 1;
             }
         }
 
         @keyframes fadein {
             from {
-                top: 0;
+                bottom: 0;
                 opacity: 0;
             }
 
             to {
-                top: 30px;
+                bottom: 30px;
                 opacity: 1;
             }
         }
 
         @-webkit-keyframes fadeout {
             from {
-                top: 30px;
+                bottom: 30px;
                 opacity: 1;
             }
 
             to {
-                top: 0;
+                bottom: 0;
                 opacity: 0;
             }
         }
 
         @keyframes fadeout {
             from {
-                top: 30px;
+                bottom: 30px;
                 opacity: 1;
             }
 
             to {
-                top: 0;
+                bottom: 0;
                 opacity: 0;
             }
         }
@@ -352,7 +352,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label" style="color: #c98b27;">Sender :</label>
+                            <label for="recipient-name" class="col-form-label" style="color: #c98b27;" require>Sender
+                                :</label>
                             <input type="text" class="form-control" id="sender-name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
@@ -378,50 +379,42 @@
             var sender = document.getElementById("sender-name").value;
             var text = document.getElementById("message-text").value;
 
+            const data = JSON.stringify({ "name": sender, "text": text });
+
             if (sender == "") {
-           
+
                 // Get the snackbar DIV
                 var x = document.getElementById("snackbar");
-
                 x.innerHTML = "Add Name First";
-             
-                // Add the "show" class to DIV
                 x.className = "show";
-                // After 3 seconds, remove the show class from DIV
                 setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
             } else {
 
                 var link = "https://neptune-account.herokuapp.com/feedback";
-
-                // Converting JSON data to string
-                var data = JSON.stringify({ "name": sender, "text": text });
-
-                $.ajax({
-                    url: 'https://neptune-account.herokuapp.com/feedback',
-                    type: 'POST',
-                    data: data,
-                    dataType: 'json',
-                    success: function () {
+                // Creating a XHR object
+                let xhr = new XMLHttpRequest();
+                // open a connection
+                xhr.open("POST", link, true);
+                // Set the request header i.e. which type of content you are sending
+                xhr.setRequestHeader("Content-Type", "application/json");
+                // Create a state change callback
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
                         $('#feedbackmodal').modal('toggle');
                         // Get the snackbar DIV
                         var x = document.getElementById("snackbar");
-                        x.innerHTML = "Success Sending Feedback";
-                        // Add the "show" class to DIV
+                        x.innerHTML = "Sending Feedback, Thankyou !!";
                         x.className = "show";
-                        // After 3 seconds, remove the show class from DIV
                         setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-                    },
-                    error: function () {
+                    } else if (xhr.status === 500) {
                         $('#feedbackmodal').modal('toggle');
-                        // Get the snackbar DIV
-                        var x = document.getElementById("snackbar");
-                        x.innerHTML = "Failed Sending Feedback";
-                        // Add the "show" class to DIV
-                        x.className = "show";
-                        // After 3 seconds, remove the show class from DIV
-                        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
                     }
-                });
+                };
+
+                // Sending data with the request
+                xhr.send(data);
+
             }
 
         });

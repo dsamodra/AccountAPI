@@ -376,47 +376,37 @@
     <script>
         const button = document.getElementById("send");
         button.addEventListener("click", function () {
-            var sender = document.getElementById("sender-name").value;
-            var text = document.getElementById("message-text").value;
+            var sender = document.getElementById("sender-name");
+            var text = document.getElementById("message-text");
 
-            const data = JSON.stringify({ "name": sender, "text": text });
+            var link = "https://neptune-account.herokuapp.com/feedback";
+            var data = { "name": sender.value, "text": text.value };
 
-            if (sender == "") {
-
-                // Get the snackbar DIV
-                var x = document.getElementById("snackbar");
-                x.innerHTML = "Add Name First";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-
-            } else {
-
-                var link = "https://neptune-account.herokuapp.com/feedback";
-                // Creating a XHR object
-                let xhr = new XMLHttpRequest();
-                // open a connection
-                xhr.open("POST", link, true);
-                // Set the request header i.e. which type of content you are sending
-                xhr.setRequestHeader("Content-Type", "application/json");
-                // Create a state change callback
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        $('#feedbackmodal').modal('toggle');
-                        // Get the snackbar DIV
-                        var x = document.getElementById("snackbar");
-                        x.innerHTML = "Sending Feedback, Thankyou !!";
-                        x.className = "show";
-                        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-                    } else if (xhr.status === 500) {
-                        $('#feedbackmodal').modal('toggle');
-                    }
-                };
-
-                // Sending data with the request
-                xhr.send(data);
-
-            }
-
+            $.ajax({
+                url: link,
+                data: JSON.stringify(data),
+                type: 'POST',
+                traditional: true,
+                contentType: 'application/json',
+                success: function (data) {
+                    $('#feedbackmodal').modal('toggle');
+                    // Get the snackbar DIV
+                    var x = document.getElementById("snackbar");
+                    x.innerHTML = "Sending Feedback, Thankyou !!";
+                    sender.value="";
+                    text.value="";
+                    x.className = "show";
+                    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                },
+                error: function () {
+                    $('#feedbackmodal').modal('toggle');
+                    // Get the snackbar DIV
+                    var x = document.getElementById("snackbar");
+                    x.innerHTML = "Failed Sending Feedback";
+                    x.className = "show";
+                    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                }
+            });
         });
     </script>
 

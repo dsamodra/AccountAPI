@@ -97,7 +97,8 @@ router.patch('/:iduser', async (req, res) => {
                         name: req.body.name,
                         email: req.body.email,
                         password: req.body.password,
-                        profileImg: req.body.profileImg
+                        profileImg: req.body.profileImg,
+                        role: req.body.role,
                     }
                 }
             )
@@ -125,7 +126,8 @@ router.post('/', async (req, res) => {
         email: req.body.email,
         username: req.body.name,
         password: req.body.password,
-        profileImg: req.body.profileImg
+        profileImg: req.body.profileImg,
+        role: req.body.role,
     });
 
     try {

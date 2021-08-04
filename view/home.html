@@ -103,7 +103,6 @@
 
         /* The browser window */
         .container {
-            border: 3px solid #f1f1f1;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
         }
@@ -111,7 +110,6 @@
         /* Container for columns and the top "toolbar" */
         .row {
             padding: 10px;
-            background: #ffbf56;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
         }
@@ -308,12 +306,9 @@
                             <p class="text-caption">
                                 Feature that Available : Create, Read, Update, Delete User<br
                                     class="d-sm-inline d-none" />
-                            <div class="container">
-                                <div class="row">
+                            <div class="container card">
+                                <div class="row orange">
                                     <div class="column left">
-                                        <span class="dot" style="background:#ED594A;"></span>
-                                        <span class="dot" style="background:#FDD800;"></span>
-                                        <span class="dot" style="background:#5AC05A;"></span>
                                     </div>
                                     <div class="column middle">
                                     </div>
@@ -369,6 +364,7 @@
             </div>
         </div>
     </div>
+    <div class="container" id="fedback"></div>
 
     <!-- The actual snackbar -->
     <div id="snackbar"></div>
@@ -393,8 +389,8 @@
                     // Get the snackbar DIV
                     var x = document.getElementById("snackbar");
                     x.innerHTML = "Sending Feedback, Thankyou !!";
-                    sender.value="";
-                    text.value="";
+                    sender.value = "";
+                    text.value = "";
                     x.className = "show";
                     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
                 },
@@ -408,6 +404,21 @@
                 }
             });
         });
+
+        function showfeedback() {
+            var link = "https://neptune-account.herokuapp.com/feedback";
+            $.getJSON(link, function (data) {
+                console.log(data);
+                for (i = 0; i < data.length; i++) {
+
+                    $('#fedback').append(
+                        `
+                        <button type="button" class="btn btn-secondary btn-lg" style="margin-top:20px;">` + data[i].text + `</button>
+                       `
+                    );
+                }
+            });
+        };
     </script>
 
 

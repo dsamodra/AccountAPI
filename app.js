@@ -42,5 +42,9 @@ app.use('/user', userRoute);
 const feedbackRoute = require('./routes/feedback');
 app.use('/feedback', feedbackRoute);
 
+// IMPORT ROUTES FEEDBACK
+const urlRoute = require('./routes/url');
+app.use('/url', urlRoute);
+
 
 
